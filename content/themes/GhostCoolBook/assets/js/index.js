@@ -145,7 +145,30 @@ var $post = $('.row'),
                 }
             }
         }
-    })
+    });
+
+    // 初始化雨滴效果
+    if ( 1 > $('script[src*="init_rainyday"]').size() ) {
+        if ( '' != $('#ccontainer').attr('data-bg') ){
+            $('#ccontainer').css('background-image', 'url('+$('#ccontainer').attr('data-bg')+')');
+        }
+        return;
+    }
+
+    $(window).load(function(){
+
+        // On the home page, move the blog icon inside the header 
+        // for better relative/absolute positioning.
+
+        $('#site-bg-image').show();
+
+        $(window).resize(function(){
+            $(window).scroll();
+        });
+
+        $(window).resize();
+        $(window).scroll();
+    });
     
 
 }(jQuery));
