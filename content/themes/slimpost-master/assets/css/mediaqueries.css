@@ -1,0 +1,56 @@
+@media screen and (max-width: 960px) {
+    body {
+        margin: 3% 2%;
+        background: #fff;    
+    }
+    
+    .wrapper {       
+        width: 98%;
+        background-color: #fff;
+        padding: 0;
+        margin: 0 auto;
+    }
+    
+    .social-links:after {
+        content: "";
+        width: 0;
+    }
+    
+    .social-links:before {
+        content: "";
+        width: 0;
+    }
+    
+    .logo {
+        width: 100%;
+        max-width: 550px;
+        display: inline-block;
+    }
+    
+    .logo H1 {
+        margin: 45px 10px 15px 10px;
+    }
+    
+    .header {
+        text-align: center;
+    }
+    
+    .poweredby {
+        background-color: #ebe8df;
+        margin-left: -2%;
+        margin-right: -2%;
+        margin-bottom: -3%;
+    }
+    
+    .post IMG {
+        max-width: 100%;
+        width: 100%;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;      
+    }
+    
+    .footer {
+        margin: 20px 0;
+    }
+}

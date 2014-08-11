@@ -1,0 +1,99 @@
+{{!< default}}
+
+{{! The comment above "< default" means - insert everything in this file into
+    the {body} of the default.hbs template, which contains our header/footer. }}
+
+{{! The big featured header on the homepage, with the site logo and description }}
+<header id="site-head" {{#if @blog.cover}}style="background-image: url({{@blog.cover}})"{{/if}}>
+    <div class="vertical">
+        <div id="site-head-content" class="inner">
+
+            {{#if @blog.logo}}<a id="blog-logo" href="{{@blog.url}}"><img src="{{@blog.logo}}" alt="Blog Logo" /></a>{{/if}}
+            <h1 class="blog-title">{{@blog.title}}</h1>
+            <h2 class="blog-description">{{@blog.description}}</h2>
+
+            <a class='btn first'>Take a tour</a>
+            <a class='btn last'>Cut to the chase</a><br>
+            <i id='header-arrow' class="fa fa-angle-down"></i>
+        </div>
+    </div>
+
+</header>
+
+{{! The main content area on the homepage }}
+<main class="content" role="main">
+
+    <div class='fixed-nav'>
+
+    </div>
+
+    {{! Each post will be output using this markup }}
+    <div class='post-holder posts'>
+        {{#foreach posts}}
+            <div class="row">
+                {{#if @odd}}
+                    <div class="col-sm-6 post-index left {{#if @first}}first{{/if}}">
+                        <div class="ih-item square effect9 bottom_to_top">
+                            <a href="{{url}}" target="_blank">
+                              <div class="img"><img src="" alt="img"></div>
+                              <div class="info">
+                                <div class="info-back">
+                                    <header class="post-header">
+                                        <h2 class="post-title" item_index="{{@index}}">{{{title}}}</h2>
+                                    </header>
+                                    <p>{{content characters="140"}}</p>
+                                </div>
+                              </div>
+                            </a>
+                        </div>
+                    </div>
+                {{else}}
+                    <div class="col-sm-6 post-index right {{#if @last}}last{{/if}}">
+                        <div class="ih-item square effect9 bottom_to_top">
+                            <a href="{{url}}" target="_blank">
+                              <div class="img"><img src="" alt="img"></div>
+                              <div class="info">
+                                <div class="info-back">
+                                    <header class="post-header">
+                                        <h2 class="post-title" item_index="{{@index}}">{{{title}}}</h2>
+                                    </header>
+                                    <p>{{content characters="140"}}</p>
+                                </div>
+                              </div>
+                            </a>
+                        </div>
+                    </div>
+                {{/if}}
+            </div>
+        {{/foreach}}
+
+        <!--{{#foreach posts}}
+                {{#if @first}}
+                    <article class="{{post_class}} first {{#if @even}}even{{else}}odd{{/if}}">
+                {{else}}
+                    {{#if @last}}
+                        <article class="{{post_class}} last {{#if @even}}even{{else}}odd{{/if}}">
+                    {{else}}
+                        <article class="{{post_class}} {{#if @even}}even{{else}}odd{{/if}}">
+                    {{/if}}
+                {{/if}}
+            
+                <header class="post-header">
+                    
+                    <h2 class="post-title">{{{title}}}</h2>
+
+                </header>
+                <section class="post-content">
+                    <p>{{content characters="140"}}</p>
+                </section>
+            </article>
+            {{!! <div class='post-after'></div>}}
+        {{/foreach}}-->
+    </div>
+    <div class="clear"><div>
+    {{pagination}}
+
+    {{!! After all the posts, we have the previous/next pagination links }}
+    
+
+</main>

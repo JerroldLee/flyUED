@@ -1,0 +1,53 @@
+{{!< default}}
+
+<div class="wrapper">
+    {{> header}}
+
+    <section class="articles">
+        {{#post}}
+
+        <article class="{{post_class}}">
+            <header class="post-header">
+                <h2 class="post-title"><a href="{{url}}">{{{title}}}</a></h2>               
+                <time datetime="{{date format='YYYY-MM-DD'}}">{{date format="MMMM DD, YYYY"}}</time>
+            </header>
+            
+            <section class="post-excerpt">
+                {{content}}
+            </section>
+        </article>
+        
+        <section class="author-profile">
+            <div class="author-image">
+                <img class="author-image-inner" src="{{author.image}}" /> 
+            </div>
+            <div class="author-bio">
+                <div class="author-name">{{author.name}}</div>
+                <div class="author-bio-text">{{author.bio}}</div>
+            </div>
+        </section>
+        
+        <div class="clearfix">
+            
+        </div>
+
+        <section class="comments">
+            <div id="disqus_thread"></div>
+            <script type="text/javascript">            
+                {{> disqus-shortname}}
+
+                (function() {
+                    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                })();
+            </script>
+            <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+            <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+        </section>
+
+        {{/post}}
+    </section>
+    
+    {{> footer}}
+</div>

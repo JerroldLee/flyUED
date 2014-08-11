@@ -1,0 +1,105 @@
+/* html5doctor.com Reset Stylesheet v1.4 2009-07-27 Author: Richard Clark - http://richclarkdesign.com */html,body,div,span,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,abbr,address,cite,code,del,dfn,em,img,ins,kbd,q,samp,small,strong,sub,sup,var,b,i,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,dialog,figure,footer,header,hgroup,menu,nav,section,menu,time,mark,audio,video{border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent;margin:0;padding:0}body{line-height:1;margin:0}article,aside,dialog,figure,footer,header,hgroup,nav,section,main{display:block}nav ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:none}a{border:0;font-size:100%;vertical-align:baseline;background:transparent;outline:0;margin:0;padding:0}ins{background-color:#ff9;color:#000;text-decoration:none}mark{background-color:#ff9;color:#000;font-style:italic;font-weight:bold}del{text-decoration:line-through}abbr[title],dfn[title]{border-bottom:1px dotted #000;cursor:help}table{border-collapse:collapse;border-spacing:0}hr{display:block;height:1px;border:0;border-top:1px solid #cccccc;margin:1em 0;padding:0}input,select{vertical-align:middle}
+
+/*
+Float clearing goodness from Handcrafted CSS book 
+---------------------------------------------------------------------------------------------------------------------------------- */
+.group:after { content: "."; display: block; height: 0; clear: both; visibility: hidden; }
+* html .group { height: 1%; }
+*:first-child+html .group { min-height: 1px; }
+
+/*
+Playing god with the box model!
+---------------------------------------------------------------------------------------------------------------------------------- */
+* {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+/* Import the font file with the icons in it */
+@font-face {
+    font-family: 'icons';
+    src:url('../fonts/icons.eot');
+    src:url('../fonts/icons.eot?#iefix') format('embedded-opentype'),
+        url('../fonts/icons.woff') format('woff'),
+        url('../fonts/icons.ttf') format('truetype'),
+        url('../fonts/icons.svg#icons') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* Apply these base styles to all icons */
+.icon-ghost, .icon-feed, .icon-twitter, .icon-google-plus, .icon-facebook { font-family: 'icons'; speak: none; font-style: normal; font-weight: normal; font-variant: normal; text-transform: none; line-height: 1; -webkit-font-smoothing: antialiased; text-decoration: none; font-size: 3.2rem; }
+
+/* Each icon is created by inserting the corret character into the 
+   content of the :before pseudo element. */
+.icon-ghost:before { content: "\e000"; }
+.icon-feed:before { content: "\e001"; }
+.icon-twitter:before { content: "\e002"; font-size: 1.1em; color: #00acee; }
+.icon-google-plus:before { content: "\e003"; }
+.icon-facebook:before { content: "\e004"; color: #3b5998; }
+.icon-google-plus { color: #dd4b39; }
+
+html { font-size: 62.5%; }
+body { font-size: 1.8rem; font-family: 'Karla', "Helvetic Neue", Helvetica, Arial, sans-serif; color: #565656; line-height: 1.5; background: #f6f4ee; }
+h1, h2, h3, h4, h5, h6 { text-rendering: optimizeLegibility; margin-bottom: 15px; letter-spacing: -1px; color: rgba(231, 76, 60, 1); line-height: 1.1; }
+h1 { font-size: 6rem; letter-spacing: -2px; }
+h2 { font-size: 4.5rem; letter-spacing: -2px; }
+h3 { font-size: 3rem; }
+h4 { font-size: 2.6rem; }
+
+.centered { text-align: center; }
+.hidden { display: none; }
+.left { float: left; }
+.right { float: right; }
+
+a { text-decoration: none; color: #E74C3C; }
+a:hover { text-decoration: underline; }
+p, article ul, article ol, pre { margin-bottom: 15px; }
+ul ul, ol ol { margin-bottom: 0; }
+pre { background: #fdf7e6; padding: 15px; border-radius: 5px; }
+img { max-width: 100%; height: auto; vertical-align: bottom; }
+
+.container { max-width: 85rem; margin: 0 auto; padding: 0 30px; }
+
+header.site { background: rgba(231, 76, 60, 1); padding: 30px 0; margin-bottom: 60px; text-align: center; }
+header.site.header-image { padding-top: 200px; padding-bottom: 200px; background-size: cover; background-position: center center; }
+header.site h1 { color: #fff; font-size: 3rem; margin-bottom: 0; letter-spacing: -1px; display: inline-block; }
+header .blog-logo img { display: inline-block; max-height: 60px; width: auto; line-height: 0; }
+
+.blog-description { color: #424242; text-align: center; font-size: 3.6rem; font-weight: 300; margin-bottom: 60px; }
+
+article { margin-bottom: 30px; background: #fff; padding: 60px; border-radius: 5px; }
+article ul, article ol { margin-left: 20px; }
+
+.post-title { border-bottom: 2px solid #f6f4ee; padding-bottom: 30px; margin-bottom: 30px; }
+h1.post-title { letter-spacing: -4px; color: #424242; border: none; padding-bottom: 0; margin-bottom: 60px; }
+h2.post-title { text-align: center; }
+.post-meta { color: rgba(0, 0, 0, 0.3); text-align: center; margin-bottom: 0; }
+.post-excerpt p { margin-bottom: 0; }
+
+.pagination { text-align: center; margin: 60px 0; }
+.pagination .newer-posts, .pagination .older-posts { padding: 10px 15px; background: #fff; border-radius: 5px; margin: 0 10px; }
+
+.post-footer { margin: 30px -60px -60px; padding: 30px 60px; border-top: 2px solid #f6f4ee; }
+.post-footer h4 { position: relative; top: 5px; }
+
+.author { margin: 60px; }
+.author p { margin-bottom: 0; }
+.author-image { border-radius: 50%; width: 100px; float: left; margin-right: 15px; margin-bottom: 15px; }
+
+footer.site { background: #424242; color: #fff; padding: 30px 0; }
+footer.site .subscribe { float: right; }
+footer.site .subscribe-text { position: relative; top: -12px; padding-left: 5px; color: #fff; display: none; }
+
+@media screen and (max-width: 768px) {
+	header.site.header-image { padding-top: 130px; padding-bottom: 130px; }
+	main.container { padding: 0; }
+	article { padding: 30px; border-radius: 0; }
+	h1.post-title { padding: 0 30px; }
+	
+	.post-footer { margin: 30px -30px -30px; padding: 30px; }
+	
+	.author { margin: 30px; }
+}
+
