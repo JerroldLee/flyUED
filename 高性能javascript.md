@@ -1,7 +1,4 @@
 # 一、加载和运行
-* 欢迎使用 Swift
-   * 关于 Swift ([numbbbbb])
-   * Swift 初见 ([numbbbbb])
 # 二、数据访问
 # 三、编程
 # 四、算法和流程控制
