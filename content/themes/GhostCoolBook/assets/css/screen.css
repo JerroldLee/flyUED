@@ -721,7 +721,7 @@ a.fn-item.active {
 /* The author credit area after the post */
 .post-footer {
     position: relative;
-    margin: 4rem 0 0 0;
+    margin: 4rem 0 4rem 0;
     padding: 4rem 0 0 0;
     border-top: #EBF2F6 1px solid;
     min-height: 150px;
