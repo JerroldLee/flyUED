@@ -70,10 +70,12 @@ var $post = $('.row'),
         		h = $sitehead.offset().top + $(this).height()-100;
 
         	if(w >= g && w<=h) {
-        		$('.fixed-nav').fadeOut('fast')
+        		//$('.fixed-nav').fadeOut('fast');
+                $('.fixed-nav').fadeIn('fast');
         	} else {
-                if($(window).width()>500)
-        		  $('.fixed-nav').fadeIn('fast')
+                $('.fixed-nav').fadeIn('fast');
+                /*if($(window).width()>500)
+        		  $('.fixed-nav').fadeIn('fast')*/
         	}
 
         	$post.each(function () {
@@ -94,6 +96,8 @@ var $post = $('.row'),
         		}
         	})
         });
+        $(window).trigger('scroll');//触发scroll事件
+
         $('li').before('<span class="bult fa fa-asterisk icon-asterisk"></span>')
         $('blockquote p').prepend('<span class="quo icon-quote-left"></span>')
             .append('<span class="quo icon-quote-right"></span>')

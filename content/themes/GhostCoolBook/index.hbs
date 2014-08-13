@@ -6,6 +6,15 @@
 {{! The big featured header on the homepage, with the site logo and description }}
 <header id="site-head" {{#if @blog.cover}}style="background-image: url({{@blog.cover}})"{{/if}}>
     <div class="vertical">
+        <div style="overflow:hidden; left:10px; height:0; width:0;">
+            <img crossorigin="anonymous" id="site-bg-image" alt="background" src="/content/images/2014/Aug/bizhi-0757-6571.jpg">
+        </div>
+        <div id="ccontainer" data-bg="/content/images/2014/Aug/bizhi-0757-6571.jpg">
+            <div id="cholder">
+                <canvas id="canvas" width="1673" height="1120" style="width: 1663px; height: 1114px; top: -501px; left: 0px;"></canvas>
+            </div>
+            <div id="choverbg"></div>
+        </div>
         <div id="site-head-content" class="inner">
 
             {{#if @blog.logo}}<a id="blog-logo" href="{{@blog.url}}"><img src="{{@blog.logo}}" alt="Blog Logo" /></a>{{/if}}
@@ -16,15 +25,7 @@
             <a class='btn last'>Cut to the chase</a><br>
             <i id='header-arrow' class="fa fa-angle-down"></i>
         </div>
-        <div style="overflow:hidden; left:10px; height:0; width:0;">
-            <img crossorigin="anonymous" id="site-bg-image" alt="background" src="http://i.imgur.com/N7ETzFO.jpg">
-        </div>
-        <div id="ccontainer" data-bg="http://i.imgur.com/N7ETzFO.jpg">
-            <div id="cholder">
-                <canvas id="canvas" width="1673" height="1120" style="width: 1663px; height: 1114px; top: -501px; left: 0px;"></canvas>
-            </div>
-            <div id="choverbg"></div>
-        </div>
+        
     </div>
 
 </header>
@@ -99,7 +100,7 @@
             {{!! <div class='post-after'></div>}}
         {{/foreach}}-->
     </div>
-    <div class="clear"><div>
+    <div class="clear page-contr"><div>
     {{pagination}}
 
     {{!! After all the posts, we have the previous/next pagination links }}

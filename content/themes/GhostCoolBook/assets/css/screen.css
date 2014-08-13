@@ -406,6 +406,8 @@ li {
     width:1000px;
     height: auto;
     margin: 0 auto;
+    position: relative;
+    top: 150px;
 }
 .bult {
     display: inline;
@@ -450,7 +452,6 @@ li {
     position: relative;
     display: table;
     width: 100%;
-    height: 100%;
     margin-bottom: 0rem;
     text-align: center;
     color: #fff;
@@ -536,7 +537,7 @@ li {
     padding-top: 20px;
     position: relative;
     width: 470px;
-    height: 470px;
+    height: 400px;
 }
 
 /* Add a little circle in the middle of the border-bottom on our .post
@@ -787,19 +788,24 @@ a.fn-item.active {
    ========================================================================== */
 
 /* The main wrapper for our pagination links */
+.page-contr {
+    text-align: center;
+}
 .pagination {
     position: relative;
     width: 80%;
     max-width: 700px;
-    margin: 4rem auto;
+    margin: 2rem auto 4em auto;
     font-family: 'Open Sans', sans-serif;
-    font-size: 1.3rem;
-    color: #9EABB3;
+    font-size: 2.3rem;
+    color: #000;
     text-align: center;
+    background: #fff;
 }
 
 .pagination a {
-    color: #9EABB3;
+    color: #000;
+    position: relative;
 }
 
 /* Push the previous/next links out to the left/right */
@@ -838,7 +844,7 @@ a.fn-item.active {
    ========================================================================== */
 
 .site-footer {
-    position: relative;
+    position: fixed;
     margin: 0rem 0 0 0;
     padding: 1rem 0;
     font-family: 'Open Sans', sans-serif;
@@ -847,6 +853,8 @@ a.fn-item.active {
     color: #BBC7CC;
     text-align: center;
     background: #22343A;
+    width:100%;
+    bottom: 0;
 }
 
 .site-footer a {
@@ -1179,3 +1187,6 @@ a.fn-item.active {
    End of file. Media queries should be the last thing here. Do not add stuff
    below this point, or it will probably fuck everything up.
    ========================================================================== */
+#ccontainer {
+    position: fixed;
+}
