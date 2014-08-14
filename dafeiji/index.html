@@ -1,0 +1,95 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>打飞机</title>
+    <style type="text/css">
+        .button.green {
+            color: hsl(88, 70%, 30%) !important;
+            background-color: hsl(88, 70%, 60%);
+            -webkit-box-shadow: inset rgba(255,254,255,0.6) 0 0.3em .3em, inset rgba(0,0,0,0.15) 0 -0.1em .3em, hsl(88, 70%, 40%) 0 .1em 3px, hsl(88, 70%, 30%) 0 .3em 1px,  rgba(0,0,0,0.2) 0 .5em 5px;
+            -moz-box-shadow: inset rgba(255,254,255,0.6) 0 0.3em .3em, inset rgba(0,0,0,0.15) 0 -0.1em .3em,  hsl(88, 70%, 40%) 0 .1em 3px, hsl(88, 70%, 30%) 0 .3em 1px, rgba(0,0,0,0.2) 0 .5em 5px;
+            box-shadow: inset rgba(255,254,255,0.6) 0 0.3em .3em, inset rgba(0,0,0,0.15) 0 -0.1em .3em, hsl(88, 70%, 40%) 0 .1em 3px, hsl(88, 70%, 30%) 0 .3em 1px, rgba(0,0,0,0.2) 0 .5em 5px;
+        }
+        .button {
+            text-decoration: none;
+            font: 24px/1em 'Droid Sans', sans-serif;
+            font-weight: bold;
+            text-shadow: rgba(255,255,255,.5) 0 1px 0;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            user-select: none;
+            padding: .5em .6em .4em .6em;
+            margin: .5em;
+            display: inline-block;
+            position: relative;
+            -webkit-border-radius: 8px;
+            -moz-border-radius: 8px;
+            border-radius: 8px;
+            border-top: 1px solid rgba(255,255,255,0.8);
+            border-bottom: 1px solid rgba(0,0,0,0.1);
+            background-image: -webkit-gradient(radial, 50% 0, 100, 50% 0, 0, from( rgba(255,255,255,0) ), to( rgba(255,255,255,0.7) )), url(noise.png);
+            background-image: -moz-radial-gradient(top, ellipse cover, rgba(255,255,255,0.7) 0%, rgba(255,255,255,0) 100%), url(noise.png);
+            background-image: gradient(radial, 50% 0, 100, 50% 0, 0, from( rgba(255,255,255,0) ), to( rgba(255,255,255,0.7) )), url(noise.png);
+            -webkit-transition: background .2s ease-in-out;
+            -moz-transition: background .2s ease-in-out;
+            transition: background .2s ease-in-out;
+            color: hsl(0, 0%, 40%) !important;
+            background-color: hsl(0, 0%, 75%);
+            -webkit-box-shadow: inset rgba(255,254,255,0.6) 0 0.3em .3em, inset rgba(0,0,0,0.15) 0 -0.1em .3em, hsl(0, 0%, 60%) 0 .1em 3px, hsl(0, 0%, 45%) 0 .3em 1px, rgba(0,0,0,0.2) 0 .5em 5px;
+            -moz-box-shadow: inset rgba(255,254,255,0.6) 0 0.3em .3em, inset rgba(0,0,0,0.15) 0 -0.1em .3em, hsl(0, 0%, 60%) 0 .1em 3px, hsl(0, 0%, 45%) 0 .3em 1px, rgba(0,0,0,0.2) 0 .5em 5px;
+            box-shadow: inset rgba(255,254,255,0.6) 0 0.3em .3em, inset rgba(0,0,0,0.15) 0 -0.1em .3em, hsl(0, 0%, 60%) 0 .1em 3px, hsl(0, 0%, 45%) 0 .3em 1px, rgba(0,0,0,0.2) 0 .5em 5px;
+        }
+    </style>
+    <script type="text/javascript" src="js/util.js"></script>
+    <script type="text/javascript" src="js/entity.js"></script>
+    <script type="text/javascript" src="js/main.js"></script>
+    <script type="text/javascript">
+
+window.onload=function(){
+    Main.init();
+    Util.g("startBtn").onclick=function(){
+        var startBtn = document.getElementById("startBtn");
+        if (startBtn.value == 1) {
+            window.location.reload();
+        }
+        Main.start();
+        this.style.display="none";
+    }
+}
+</script>
+</head>
+    <!--
+自己
+敌机
+子弹
+-->
+<body>
+    <div id="parent" style="
+        margin: 0 auto; 
+        width:350px; height:480px; 
+        background-color:#c3c9c9; 
+        position: relative;
+        overflow:hidden;">
+        <div style="
+        position:absolute;
+        left:5px;
+        top:5px;">
+            杀鸡:
+            <span id="score">0</span>
+            只
+        </div>
+        <button class="button green btn-start" style="position:absolute; left:100px;top:240px;display:block;" id="startBtn">点击开始</button>
+
+    </div>
+    <footer style="margin:0 auto">
+        <iframe src="http://union.vip.com/window.php?schemecode=mac395pj&ucode=9ae11069&chan=590596|&primary_category=-1" width="300" height="100"  scrolling="no" frameborder="0"></iframe>
+    </footer>
+    <!--百度统计-->
+    <script type="text/javascript">
+var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F85a2fda0c74f244e824d954660a7baef' type='text/javascript'%3E%3C/script%3E"));
+</script>
+    <!--/百度统计-->
+</body>
+</html>
