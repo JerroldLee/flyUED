@@ -464,6 +464,101 @@ if (value < 6){
 
 
 ## 六、响应接口
+> ####1、在数组处理中使用定时器
+> 一个常见的长运行脚本就是循环占用了太长的运行时间。使用定时器进行优化的基本方法是将循环工作分解到定时器序列中。
+
+> 典型的循环模式如下：
+
+```
+for (var i=0, len=items.length; i < len; i++){
+process(items[i]);
+}
+```
+
+> 这样的循环结构运行时间过长的原因有二，process()的复杂度，items 的大小，或两者兼有。是否可用定时器取代循环的决定性因素有两个：（1）此处理过程是否必须是同步处理；（2）数据是否必须按顺序处理。如果这两个回答都是“否”，那么代码将适于使用定时器分解工作。
+
+```
+function processArray(items, process, callback){
+	var todo = items.concat(); //create a clone of the original
+	setTimeout(function(){
+		process(todo.shift());
+		if (todo.length > 0){
+			setTimeout(arguments.callee, 25);
+		} else {
+			callback(items);
+		}
+	}, 25);
+}
+
+var items = [123, 789, 323, 778, 232, 654, 219, 543, 321, 160];
+function outputValue(value){
+	console.log(value);
+}
+processArray(items, outputValue, function(){
+	console.log("Done!");
+});
+```
+
+> ####2、
+
+> 我们通常将一个任务分解成一系列子任务。如果一个函数运行时间太长，那么查看它是否可以分解成一系列能够短时间完成的较小的函数。可将一行代码简单地看作一个原子任务，多行代码组合在一起构成一个独立任务。某些函数可基于函数调用进行拆分。例如：
+
+```
+function saveDocument(id){
+	//save the document
+	openDocument(id);
+	writeText(id);
+	closeDocument(id);
+	//update the UI to indicate success
+	updateUI(id);
+}
+```
+
+> 如果函数运行时间太长，它可以拆分成一系列更小的步骤，把独立方法放在定时器中调用。你可以将每个函数都放入一个数组，然后使用数组处理模式：
+
+```
+function saveDocument(id){
+	var tasks = [openDocument, writeText, closeDocument, updateUI];
+	setTimeout(function(){
+		//execute the next task
+		var task = tasks.shift();
+		task(id);
+		//determine if there's more
+        if (tasks.length > 0){
+            setTimeout(arguments.callee, 25);
+        }
+	}, 25);
+}
+```
+
+> ####3、限时运行代码
+
+> 有时每次只执行一个任务效率不高。考虑这样一种情况：处理一个拥有1'000 个项的数组，每处理一个
+项需要1 毫秒。如果每个定时器中处理一个项，在两次处理之间间隔25 毫秒，那么处理此数组的总时间
+是(25 + 1) × 1'000 = 26'000 毫秒，也就是26 秒。如果每批处理50 个，每批之间间隔25 毫秒会怎么样呢？
+整个处理过程变成(1'000 / 50) × 25 + 1'000 = 1'500 毫秒，也就是1.5 秒，而且用户也不会察觉界面阻塞，因
+为最长的脚本运行只持续了50 毫秒。通常批量处理比每次处理一个更快。
+
+```
+function timedProcessArray(items, process, callback){
+	var todo = items.concat(); //create a clone of the original
+	setTimeout(function(){
+		var start = +new Date();
+		do {
+			process(todo.shift());
+		} while (todo.length > 0 && (+new Date() - start < 50));
+		if (todo.length > 0){
+			setTimeout(arguments.callee, 25);
+		} else {
+			callback(items);
+		}
+	}, 25);
+}
+```
+
+
+
+
 ## 七、异步javascript
 ## 八、编程实践
 ## 九、构建和部署高性能javascript应用
