@@ -561,6 +561,72 @@ function timedProcessArray(items, process, callback){
 
 ## 七、异步javascript
 ## 八、编程实践
+> ####1、使用对象/数组直接量
+
+> 在JavaScript 中有多种方法创建对象和数组，但没有什么比创建对象和数组直接量更快了。如果不使用
+直接量，典型的对象创建和赋值是这样的：
+
+```
+//create an object
+var myObject = new Object();
+myObject.name = "Nicholas";
+myObject.count = 50;
+myObject.flag = true;
+myObject.pointer = null;
+//create an array
+var myArray = new Array();
+myArray[0] = "Nicholas";
+myArray[1] = 50;
+myArray[2] = true;
+myArray[3] = null;
+```
+
+> 虽然在技术上这种做法没有什么不对，直接量赋值很快。作为一个额外的好处，直接量在你的代码中占用较少空间，所以整个文件尺寸可以更小。上面的代码可用直接量重写为下面的样式：
+
+```
+//create an object
+var myObject = {
+name: "Nicholas",
+count: 50,
+flag: true,
+pointer: null
+};
+//create an array
+var myArray = ["Nicholas", 50, true, null];
+```
+
+> 此代码的效果与前面的版本相同，但在几乎所有浏览器上运行更快（在Firefox 3.5 上几乎没区别）。随着对象属性和数组项数的增加，使用直接量的好处也随之增加。
+
+> ####2、位操作运算符
+
+> 有许多方法可以使用位运算符提高JavaScript 的速度。首先可以用位运算符替代纯数学操作。例如，通常采用对2 取模运算实现表行颜色交替显示，例如：
+
+```
+for (var i=0, len=rows.length; i < len; i++){
+	if (i % 2) {
+	className = "even";
+} else {
+	className = "odd";
+}
+	//apply class
+}
+```
+
+> 计算对2 取模，需要用这个数除以2 然后查看余数。如果你看到32 位数字的底层（二进制）表示法，你会发现偶数的最低位是0，奇数的最低位是1。如果此数为偶数，那么它和1 进行位与操作的结果就是0；如果此数为奇数，那么它和1 进行位与操作的结果就是1。也就是说上面的代码可以重写如下：
+
+```
+for (var i=0, len=rows.length; i < len; i++){
+	if (i & 1) {
+	className = "odd";
+} else {
+	className = "even";
+}
+	Download at www.Pin5i.Com
+	//apply class
+}
+```
+
+
 ## 九、构建和部署高性能javascript应用
 ## 十、工具
 
